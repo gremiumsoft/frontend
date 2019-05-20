@@ -1,0 +1,56 @@
+swagger: "2.0"
+info:
+  title: Gremium API
+  description: API description in Markdown.
+  version: 0.1.0
+host: api.example.com
+schemes:
+  - https
+consumes:
+  - application/json
+paths:
+  /v1/quizes:
+    get:
+      summary: Returns a list of quizes.
+      description: Optional extended description in Markdown.
+      operationId: GetQuizes
+      tags:
+        - quiz
+      produces:
+        - application/json
+      responses:
+        200:
+          description: OK
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/quizQuestion'
+        default:
+          description: Generic error
+          schema:
+            $ref: '#/definitions/error'
+definitions:
+  error:
+    type: object
+    properties:
+      message:
+        type: string
+  quizQuestion:
+    type: object
+    required:
+      - id
+      - question
+      - answers
+      - correct_answer_idx
+    properties:
+      id:
+        type: string
+      question:
+        type: string
+      answers:
+        type: array
+        items:
+          type: string
+      correct_answer_idx:
+        type: integer
+        format: int32
