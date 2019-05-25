@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: frontendservice-service
+  namespace: default
+  labels:
+    app: frontendservice
+spec:
+  ports:
+    - protocol: TCP
+      port: 8000
+      targetPort: 8000
+  selector:
+    app: frontendservice
+  type: NodePort

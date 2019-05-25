@@ -12,6 +12,8 @@ import (
 	"net/http"
 )
 
+const quizServiceAddress = "quizservice-service.default.svc.cluster.local:8000"
+
 // TODO(JN): this should be moved from here and some additional fields
 // should be added, request id for ex.
 type Params struct {
@@ -20,7 +22,7 @@ type Params struct {
 
 func Register(p *Params, api *operations.GremiumAPI) {
 	api.QuizGetQuizesHandler = quiz.GetQuizesHandler(
-		func (p *Params) quiz.GetQuizesHandlerFunc {
+		func(p *Params) quiz.GetQuizesHandlerFunc {
 			return func(params quiz.GetQuizesParams) middleware.Responder {
 				return getQuizzesHandler(p, params)
 			}
@@ -31,8 +33,7 @@ func getQuizzesHandler(p *Params, params quiz.GetQuizesParams) middleware.Respon
 	p.Slog.Info("getQuizzes handler")
 
 	// TODO(JN) we should not create a new connection for every request
-	// TODO(JN) remove hardcoded service IP
-	conn, err := grpc.Dial("127.0.0.1:8001", grpc.WithInsecure())
+	conn, err := grpc.Dial(quizServiceAddress, grpc.WithInsecure())
 	if err != nil {
 		return retServerError(err)
 	}
@@ -61,9 +62,9 @@ func retServerError(err error) middleware.Responder {
 
 func NewQuizQuestion(qq *pb.QuizQuestion) *models.QuizQuestion {
 	return &models.QuizQuestion{
-		ID: &qq.Id,
-		Question: &qq.Question,
-		Answers:qq.Answers,
+		ID:               &qq.Id,
+		Question:         &qq.Question,
+		Answers:          qq.Answers,
 		CorrectAnswerIdx: &qq.CorrectAnswerIdx,
 	}
 }
