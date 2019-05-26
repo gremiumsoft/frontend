@@ -1,0 +1,19 @@
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: frontendservice-virtualservice
+spec:
+  hosts:
+  - "*"
+  gateways:
+  - gremium-gateway
+  http:
+  - match:
+    - uri:
+        prefix: /api
+    route:
+    - destination:
+        host: frontendservice-service.default.svc.cluster.local
+        port:
+          number: 8000
+    timeout: 10s

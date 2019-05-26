@@ -8,6 +8,7 @@ schemes:
   - https
 consumes:
   - application/json
+basePath: /api
 paths:
   /v1/quizes:
     get:

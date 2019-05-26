@@ -31,6 +31,7 @@ func init() {
     "version": "0.1.0"
   },
   "host": "api.example.com",
+  "basePath": "/api",
   "paths": {
     "/v1/quizes": {
       "get": {
@@ -115,6 +116,7 @@ func init() {
     "version": "0.1.0"
   },
   "host": "api.example.com",
+  "basePath": "/api",
   "paths": {
     "/v1/quizes": {
       "get": {

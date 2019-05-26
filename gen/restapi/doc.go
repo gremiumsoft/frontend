@@ -8,7 +8,7 @@ API description in Markdown.
     Schemes:
       https
     Host: api.example.com
-    BasePath: /
+    BasePath: /api
     Version: 0.1.0
 
     Consumes:
