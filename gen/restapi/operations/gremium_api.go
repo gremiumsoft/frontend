@@ -39,8 +39,8 @@ func NewGremiumAPI(spec *loads.Document) *GremiumAPI {
 		BearerAuthenticator: security.BearerAuth,
 		JSONConsumer:        runtime.JSONConsumer(),
 		JSONProducer:        runtime.JSONProducer(),
-		QuizGetQuizesHandler: quiz.GetQuizesHandlerFunc(func(params quiz.GetQuizesParams) middleware.Responder {
-			return middleware.NotImplemented("operation QuizGetQuizes has not yet been implemented")
+		QuizGetQuizzesHandler: quiz.GetQuizzesHandlerFunc(func(params quiz.GetQuizzesParams) middleware.Responder {
+			return middleware.NotImplemented("operation QuizGetQuizzes has not yet been implemented")
 		}),
 	}
 }
@@ -73,8 +73,8 @@ type GremiumAPI struct {
 	// JSONProducer registers a producer for a "application/json" mime type
 	JSONProducer runtime.Producer
 
-	// QuizGetQuizesHandler sets the operation handler for the get quizes operation
-	QuizGetQuizesHandler quiz.GetQuizesHandler
+	// QuizGetQuizzesHandler sets the operation handler for the get quizzes operation
+	QuizGetQuizzesHandler quiz.GetQuizzesHandler
 
 	// ServeError is called when an error is received, there is a default handler
 	// but you can set your own with this
@@ -138,8 +138,8 @@ func (o *GremiumAPI) Validate() error {
 		unregistered = append(unregistered, "JSONProducer")
 	}
 
-	if o.QuizGetQuizesHandler == nil {
-		unregistered = append(unregistered, "quiz.GetQuizesHandler")
+	if o.QuizGetQuizzesHandler == nil {
+		unregistered = append(unregistered, "quiz.GetQuizzesHandler")
 	}
 
 	if len(unregistered) > 0 {
@@ -243,7 +243,7 @@ func (o *GremiumAPI) initHandlerCache() {
 	if o.handlers["GET"] == nil {
 		o.handlers["GET"] = make(map[string]http.Handler)
 	}
-	o.handlers["GET"]["/v1/quizes"] = quiz.NewGetQuizes(o.context, o.QuizGetQuizesHandler)
+	o.handlers["GET"]["/v1/quizzes"] = quiz.NewGetQuizzes(o.context, o.QuizGetQuizzesHandler)
 
 }
 

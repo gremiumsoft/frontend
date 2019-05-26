@@ -34,8 +34,8 @@ func configureAPI(api *operations.GremiumAPI) http.Handler {
 
 	api.JSONProducer = runtime.JSONProducer()
 
-	api.QuizGetQuizesHandler = quiz.GetQuizesHandlerFunc(func(params quiz.GetQuizesParams) middleware.Responder {
-		return middleware.NotImplemented("operation quiz.GetQuizes has not yet been implemented")
+	api.QuizGetQuizzesHandler = quiz.GetQuizzesHandlerFunc(func(params quiz.GetQuizzesParams) middleware.Responder {
+		return middleware.NotImplemented("operation quiz.GetQuizzes has not yet been implemented")
 	})
 
 	api.ServerShutdown = func() {}

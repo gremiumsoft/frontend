@@ -21,15 +21,15 @@ type Params struct {
 }
 
 func Register(p *Params, api *operations.GremiumAPI) {
-	api.QuizGetQuizesHandler = quiz.GetQuizesHandler(
-		func(p *Params) quiz.GetQuizesHandlerFunc {
-			return func(params quiz.GetQuizesParams) middleware.Responder {
+	api.QuizGetQuizzesHandler = quiz.GetQuizzesHandler(
+		func(p *Params) quiz.GetQuizzesHandlerFunc {
+			return func(params quiz.GetQuizzesParams) middleware.Responder {
 				return getQuizzesHandler(p, params)
 			}
 		}(p))
 }
 
-func getQuizzesHandler(p *Params, params quiz.GetQuizesParams) middleware.Responder {
+func getQuizzesHandler(p *Params, params quiz.GetQuizzesParams) middleware.Responder {
 	p.Slog.Info("getQuizzes handler")
 
 	// TODO(JN) we should not create a new connection for every request
@@ -50,11 +50,11 @@ func getQuizzesHandler(p *Params, params quiz.GetQuizesParams) middleware.Respon
 	for _, q := range qqlist.QuizQuestion {
 		qq = append(qq, NewQuizQuestion(q))
 	}
-	return quiz.NewGetQuizesOK().WithPayload(qq)
+	return quiz.NewGetQuizzesOK().WithPayload(qq)
 }
 
 func retServerError(err error) middleware.Responder {
-	return quiz.NewGetQuizesDefault(http.StatusInternalServerError).
+	return quiz.NewGetQuizzesDefault(http.StatusInternalServerError).
 		WithPayload(&models.Error{
 			Message: err.Error(),
 		})

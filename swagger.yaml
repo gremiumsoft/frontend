@@ -10,11 +10,11 @@ consumes:
   - application/json
 basePath: /api
 paths:
-  /v1/quizes:
+  /v1/quizzes:
     get:
-      summary: Returns a list of quizes.
+      summary: Returns a list of quizzes.
       description: Optional extended description in Markdown.
-      operationId: GetQuizes
+      operationId: GetQuizzes
       tags:
         - quiz
       produces:

@@ -11,15 +11,15 @@ import (
 	golangswaggerpaths "path"
 )
 
-// GetQuizesURL generates an URL for the get quizes operation
-type GetQuizesURL struct {
+// GetQuizzesURL generates an URL for the get quizzes operation
+type GetQuizzesURL struct {
 	_basePath string
 }
 
 // WithBasePath sets the base path for this url builder, only required when it's different from the
 // base path specified in the swagger spec.
 // When the value of the base path is an empty string
-func (o *GetQuizesURL) WithBasePath(bp string) *GetQuizesURL {
+func (o *GetQuizzesURL) WithBasePath(bp string) *GetQuizzesURL {
 	o.SetBasePath(bp)
 	return o
 }
@@ -27,15 +27,15 @@ func (o *GetQuizesURL) WithBasePath(bp string) *GetQuizesURL {
 // SetBasePath sets the base path for this url builder, only required when it's different from the
 // base path specified in the swagger spec.
 // When the value of the base path is an empty string
-func (o *GetQuizesURL) SetBasePath(bp string) {
+func (o *GetQuizzesURL) SetBasePath(bp string) {
 	o._basePath = bp
 }
 
 // Build a url path and query string
-func (o *GetQuizesURL) Build() (*url.URL, error) {
+func (o *GetQuizzesURL) Build() (*url.URL, error) {
 	var _result url.URL
 
-	var _path = "/v1/quizes"
+	var _path = "/v1/quizzes"
 
 	_basePath := o._basePath
 	if _basePath == "" {
@@ -47,7 +47,7 @@ func (o *GetQuizesURL) Build() (*url.URL, error) {
 }
 
 // Must is a helper function to panic when the url builder returns an error
-func (o *GetQuizesURL) Must(u *url.URL, err error) *url.URL {
+func (o *GetQuizzesURL) Must(u *url.URL, err error) *url.URL {
 	if err != nil {
 		panic(err)
 	}
@@ -58,17 +58,17 @@ func (o *GetQuizesURL) Must(u *url.URL, err error) *url.URL {
 }
 
 // String returns the string representation of the path with query string
-func (o *GetQuizesURL) String() string {
+func (o *GetQuizzesURL) String() string {
 	return o.Must(o.Build()).String()
 }
 
 // BuildFull builds a full url with scheme, host, path and query string
-func (o *GetQuizesURL) BuildFull(scheme, host string) (*url.URL, error) {
+func (o *GetQuizzesURL) BuildFull(scheme, host string) (*url.URL, error) {
 	if scheme == "" {
-		return nil, errors.New("scheme is required for a full url on GetQuizesURL")
+		return nil, errors.New("scheme is required for a full url on GetQuizzesURL")
 	}
 	if host == "" {
-		return nil, errors.New("host is required for a full url on GetQuizesURL")
+		return nil, errors.New("host is required for a full url on GetQuizzesURL")
 	}
 
 	base, err := o.Build()
@@ -82,6 +82,6 @@ func (o *GetQuizesURL) BuildFull(scheme, host string) (*url.URL, error) {
 }
 
 // StringFull returns the string representation of a complete url
-func (o *GetQuizesURL) StringFull(scheme, host string) string {
+func (o *GetQuizzesURL) StringFull(scheme, host string) string {
 	return o.Must(o.BuildFull(scheme, host)).String()
 }

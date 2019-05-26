@@ -33,7 +33,7 @@ func init() {
   "host": "api.example.com",
   "basePath": "/api",
   "paths": {
-    "/v1/quizes": {
+    "/v1/quizzes": {
       "get": {
         "description": "Optional extended description in Markdown.",
         "produces": [
@@ -42,8 +42,8 @@ func init() {
         "tags": [
           "quiz"
         ],
-        "summary": "Returns a list of quizes.",
-        "operationId": "GetQuizes",
+        "summary": "Returns a list of quizzes.",
+        "operationId": "GetQuizzes",
         "responses": {
           "200": {
             "description": "OK",
@@ -118,7 +118,7 @@ func init() {
   "host": "api.example.com",
   "basePath": "/api",
   "paths": {
-    "/v1/quizes": {
+    "/v1/quizzes": {
       "get": {
         "description": "Optional extended description in Markdown.",
         "produces": [
@@ -127,8 +127,8 @@ func init() {
         "tags": [
           "quiz"
         ],
-        "summary": "Returns a list of quizes.",
-        "operationId": "GetQuizes",
+        "summary": "Returns a list of quizzes.",
+        "operationId": "GetQuizzes",
         "responses": {
           "200": {
             "description": "OK",
